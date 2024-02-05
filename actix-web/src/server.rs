@@ -242,7 +242,12 @@ where
     /// time, the connection is closed.
     ///
     /// By default, the handshake timeout is 3 seconds.
-    #[cfg(any(feature = "openssl", feature = "rustls-0_20", feature = "rustls-0_21"))]
+    #[cfg(any(
+        feature = "openssl",
+        feature = "rustls-0_20",
+        feature = "rustls-0_21",
+        feature = "rustls-0_22"
+    ))]
     pub fn tls_handshake_timeout(self, dur: Duration) -> Self {
         self.config
             .lock()
