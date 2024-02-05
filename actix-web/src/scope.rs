@@ -471,7 +471,7 @@ impl ServiceFactory<ServiceRequest> for ScopeFactory {
             let factory_fut = factory.new_service(());
             async move {
                 let service = factory_fut.await?;
-                Ok((path, guards, service))
+                Ok::<_, Self::InitError>((path, guards, service))
             }
         }));
 
